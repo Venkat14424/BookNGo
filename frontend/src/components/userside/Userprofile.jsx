@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const Profile = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [error, setError] = useState(null);
@@ -15,7 +15,7 @@ const Profile = () => {
 
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/user/details/${userId}`);
+        const response = await fetch(`${backendUrl}/user/details/${userId}`);
         const result = await response.json();
 
         if (response.ok) {

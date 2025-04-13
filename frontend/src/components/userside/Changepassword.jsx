@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -26,7 +26,7 @@ const ChangePassword = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/user/change-password/${userId}`, {
+      const response = await fetch(`${backendUrl}/user/change-password/${userId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentPassword, newPassword }),

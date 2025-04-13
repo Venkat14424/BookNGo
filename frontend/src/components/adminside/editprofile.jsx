@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const EditAdmin = () => {
   const [adminData, setAdminData] = useState({
     adminId: "",
@@ -8,7 +8,7 @@ const EditAdmin = () => {
     gender: "",
     aadharNo: "",
   });
-
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [updated, setupdated] = useState(false);
@@ -22,7 +22,7 @@ const EditAdmin = () => {
       return;
     }
 
-    fetch(`http://localhost:3000/admin/${adminId}/profile`)
+    fetch(`${backendUrl}/admin/${adminId}/profile`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
@@ -75,7 +75,7 @@ const EditAdmin = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/admin/${storedAdminId}/editprofile`, {
+      const response = await fetch(`${backendUrl}/admin/${storedAdminId}/editprofile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

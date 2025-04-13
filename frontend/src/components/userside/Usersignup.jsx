@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const SignUp = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ const SignUp = () => {
     setTimer(30);
 
     try {
-      const response = await fetch("http://localhost:3000/user/send-otp", {
+      const response = await fetch(`${backendUrl}/user/send-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ gmail: formData.gmail, otp }),
@@ -122,7 +122,7 @@ const SignUp = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/user/signup", {
+      const response = await fetch(`${backendUrl}/user/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

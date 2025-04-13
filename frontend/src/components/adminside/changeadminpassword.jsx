@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const ChangeadminPassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -27,7 +28,7 @@ const ChangeadminPassword = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/admin/${adminId}/change-password`, {
+      const response = await fetch(`${backendUrl}/admin/${adminId}/change-password`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

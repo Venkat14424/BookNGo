@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const AddAdmin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -43,7 +43,7 @@ const AddAdmin = () => {
       [name]: value
     });
   };
-
+  
   const generateOtp = () => Math.floor(100000 + Math.random() * 900000).toString();
 
   const sendOtp = async () => {
@@ -60,7 +60,7 @@ const AddAdmin = () => {
     setTimer(30);
 
     try {
-      const response = await fetch("http://localhost:3000/user/send-otp", {
+      const response = await fetch(`${backendUrl}/user/send-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ gmail: formData.email, otp }),
@@ -109,7 +109,7 @@ const AddAdmin = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/admin/add', {
+      const response = await fetch(`${backendUrl}/admin/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

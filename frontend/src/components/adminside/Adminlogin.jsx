@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 function AdminLogin() {
   const navigate = useNavigate();
 
   const [adminId, setAdminId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  
   localStorage.setItem("adminId", adminId);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/admin/login", {
+      const response = await fetch(`${backendUrl}/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const ForgotPassword = () => {
   const navigate = useNavigate();
 
@@ -49,7 +49,7 @@ const ForgotPassword = () => {
     setTimer(30);
 
     try {
-      const response = await fetch("http://localhost:3000/user/sendotpforresetpassword", {
+      const response = await fetch(`${backendUrl}/user/sendotpforresetpassword`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userid: formData.userid, otp }),
@@ -90,7 +90,7 @@ const ForgotPassword = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/user/reset-password", {
+      const response = await fetch(`${backendUrl}/user/reset-password`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userid: formData.userid, password: formData.password }),

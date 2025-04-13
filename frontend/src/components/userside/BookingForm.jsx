@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { data, useLocation, useNavigate } from "react-router-dom";
 import QRCode from "react-qr-code";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const BookingForm = () => {
   const location = useLocation();
   const user = localStorage.getItem("userId") || localStorage.getItem("adminId");
@@ -59,7 +59,7 @@ const BookingForm = () => {
     const updatedFormData = { ...formData, date: formattedDate, bookingDateTime: currentDateTime, seatId: generateSeatNo() };
 
     try {
-      const response = await fetch("http://localhost:3000/booking/add", {
+      const response = await fetch(`${backendUrl}/booking/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedFormData),
@@ -79,7 +79,7 @@ const BookingForm = () => {
         mode:transport.mode,
       };
 
-      const response1 = await fetch("http://localhost:3000/transport/decreaseseat", {
+      const response1 = await fetch('`${backendUrl}/transport/decreaseseat', {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(seatUpdateData),

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const AddTransport = () => {
   const [formData, setFormData] = useState({
     from: '',
@@ -22,6 +22,7 @@ const AddTransport = () => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState(null);
+  const backendUrl = import.meta.env.BACKEND_URL;
   const navigate = useNavigate();
   const location = useLocation();
   const selectedMode = location.state?.selectedOption || 'bus';
@@ -70,7 +71,7 @@ const AddTransport = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:3000/transport/add-transport', {
+      const response = await fetch(`${backendUrl}/transport/add-transport`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestData),

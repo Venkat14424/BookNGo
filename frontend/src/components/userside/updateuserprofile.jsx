@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const UpdateUserProfile = () => {
   const userid = localStorage.getItem("userId");
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const UpdateUserProfile = () => {
   const [updated, setupdated] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user/details/${userid}`)
+    fetch(`${backendUrl}/user/details/${userid}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -70,7 +70,7 @@ const UpdateUserProfile = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/user/update/${userid}`, {
+      const response = await fetch(`${backendUrl}/user/update/${userid}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...userData, newUserid }),

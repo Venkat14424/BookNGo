@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const ForgotAdminPassword = () => {
   const navigate = useNavigate();
-
+  
   const [formData, setFormData] = useState({ userid: "", otp: "", password: "", confirmPassword: "" });
   const [generatedOtp, setGeneratedOtp] = useState(""); // Store generated OTP for verification
   const [error, setError] = useState("");
@@ -49,7 +49,7 @@ const ForgotAdminPassword = () => {
     setTimer(30);
 
     try {
-      const response = await fetch("http://localhost:3000/admin/sendotpforresetpassword", {
+      const response = await fetch(`${backendUrl}/admin/sendotpforresetpassword`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ adminId: formData.userid, otp }),
@@ -90,7 +90,7 @@ const ForgotAdminPassword = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/admin/reset-password", {
+      const response = await fetch(`${backendUrl}/admin/reset-password`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ adminId: formData.userid, password: formData.password }),

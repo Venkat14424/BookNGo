@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const BookedHistory = () => {
   const [bookings, setBookings] = useState([]);
   const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ const BookedHistory = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/booking/history/${userId}`);
+      const response = await fetch(`${backendUrl}/booking/history/${userId}`);
       const data = await response.json();
       if (response.ok) {
         setBookings(data);
@@ -34,14 +34,14 @@ const BookedHistory = () => {
 
   const handleDelete = async (bookingId, from, to, date, no, Class, gmail, passengerName, amount) => {
     try {
-      const response = await fetch(`http://localhost:3000/booking/delete/${bookingId}`, {
+      const response = await fetch(`${backendUrl}/booking/delete/${bookingId}`, {
         method: "DELETE",
         body: JSON.stringify({ gmail, amount }),
         headers: { "Content-Type": "application/json" },
       });
 
       if (response.ok) {
-        await fetch("http://localhost:3000/transport/increaseseat", {
+        await fetch(`${backendUrl}/transport/increaseseat`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ from, to, date, number: no, seatType: Class }),

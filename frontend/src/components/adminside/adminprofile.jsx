@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const AdminProfile = () => {
   const [adminProfile, setAdminProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     const adminId = localStorage.getItem("adminId");
     if (!adminId) {
@@ -15,7 +15,7 @@ const AdminProfile = () => {
       return;
     }
 
-    fetch(`http://localhost:3000/admin/${adminId}/profile`)
+    fetch(`${backendUrl}/admin/${adminId}/profile`)
       .then((response) =>
         response.json())
       .then((data) => {

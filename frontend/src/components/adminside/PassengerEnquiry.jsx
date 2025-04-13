@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const PassengerEnquiry = () => {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [bookings, setBookings] = useState(null);
-
+  
   const handleSearch = async () => {
     if (!/^\d{10}$/.test(phone)) {
       setError("Please enter a valid 10-digit phone number.");
       setBookings(null);
       return;
     }
-
+   
     try {
-      const response = await fetch(`http://localhost:3000/booking/search/${phone}`);
+      const response = await fetch(`${backendUrl}/booking/search/${phone}`);
 
       if (!response.ok) {
         throw new Error("No bookings found for this phone number.");
