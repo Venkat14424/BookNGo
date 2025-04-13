@@ -1,0 +1,530 @@
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+
+  user-select: none;
+}
+
+h1,
+h2 {
+  margin: 20px 0;
+}
+
+.home1 {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/tellme.webp");
+  background-size: cover;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input,
+form select {
+  margin: 10px;
+  padding: 10px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  margin-top: 10px;
+}
+
+body.popup-active {
+  overflow: hidden;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.popup-content {
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-con {
+  background-color: white;
+  color: black;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.popup-con1 {
+  background-color: black;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.popup-con1 h2 {
+  color: white;
+}
+
+.popup-con div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.popup-con div button {
+  padding: 3px 10px;
+  font-size: 24px;
+}
+
+.popup-content h2 {
+  margin-bottom: 20px;
+}
+
+.popup-content button {
+  margin: 10px;
+}
+
+.close-button {
+  background-color: #dc3545;
+}
+
+.close-button:hover {
+  background-color: #a71d2a;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  max-width: 320px;
+  background-color: white;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  gap: 1px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+select {
+  width: 200px;
+}
+
+.container-button {
+  display: flex;
+  margin-top: 30px;
+  gap: 220px;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-button button {
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  height: 10%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #222;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 15%;
+  z-index: 3000000;
+  padding-top: 20px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  /* padding: 10px; */
+}
+
+.sidebar nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: 4px;
+  padding: 10px;
+}
+
+.sidebar nav ul li a:hover {
+  background-color: #444;
+}
+
+.content {
+  top: 12%;
+  left: 15%;
+  position: absolute;
+  height: 90%;
+  width: 80%;
+}
+
+.yesnobuttton {
+  display: flex;
+  justify-content: space-around;
+}
+
+.useradminlogin,
+.usersignup {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/signup.webp");
+  background-size: cover;
+}
+
+.useradminlogin div {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  margin-top: 200px;
+  max-width: 300px;
+}
+
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 5px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.input-phone {
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.button-search {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+}
+
+.button-search:hover {
+  background-color: #0056b3;
+}
+
+.allTickets {
+  width: 85%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.booking-tickets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.booking-detail-item {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: calc(25% - 15px);
+  min-width: 250px;
+  text-align: left;
+}
+
+.booking-detail-item h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.booking-detail-item p {
+  margin: 3px;
+  font-size: 14px;
+  color: #555;
+}
+
+@media (max-width: 1024px) {
+  .booking-detail-item {
+    width: calc(33.33% - 15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-detail-item {
+    width: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-detail-item {
+    width: 100%;
+  }
+}
+
+label {
+  font-size: 18px;
+  color: black;
+}
+
+h2 {
+  color: black;
+}
+
+.booked-history-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  min-width:  360px;
+  gap: 15px;
+}
+
+.booking-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 320px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+.booking-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.booking-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-details p {
+  font-size: 14px;
+  margin: 2px;
+}
+
+.no-bookings {
+  text-align: center;
+  font-size: 16px;
+  color: gray;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.verifybutton a {
+  text-decoration: none;
+
+}
+.welcomepageheader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  padding: 15px 30px;
+  height: 70px;
+  border-bottom: 2px solid white;
+}
+
+.welcomepageheader img {
+  height: 60px;
+}
+
+.welcomepageheader h1 {
+  font-size: 2.4rem;
+  color: white;
+}
+
+.welcomepageheader div {
+  display: flex;
+  gap: 20px;
+  background-color: black;
+}
+.welcomepageheader div button{
+  height: 40px;
+  background-color:#007bff;
+}
+.welcomepageheader div button:hover{
+  background-color: #0056b3;
+}
