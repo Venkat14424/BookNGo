@@ -1,6 +1,6 @@
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const AddTransport = () => {
   const [formData, setFormData] = useState({
     from: '',
@@ -22,7 +22,6 @@ const AddTransport = () => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState(null);
-  const backendUrl = import.meta.env.BACKEND_URL;
   const navigate = useNavigate();
   const location = useLocation();
   const selectedMode = location.state?.selectedOption || 'bus';
@@ -37,7 +36,6 @@ const AddTransport = () => {
     if (!/^[a-zA-Z0-9]+$/.test(formData.number)) return "Transport number should be alphanumeric.";
     if (!/^[a-zA-Z\s]+$/.test(formData.name)) return "Transport name should contain only letters.";
 
-    // Ensure numerical values are valid
     if (parseInt(formData.normalSeats) < 0 || parseInt(formData.normalSeatAmount) < 0) return "Seats and amounts cannot be negative.";
     if (parseInt(formData.sleeperSeats) < 0 || parseInt(formData.sleeperSeatAmount) < 0) return "Seats and amounts cannot be negative.";
     if (parseInt(formData.acSeats) < 0 || parseInt(formData.acSeatAmount) < 0) return "Seats and amounts cannot be negative.";
