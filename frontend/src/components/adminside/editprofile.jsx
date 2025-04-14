@@ -55,7 +55,7 @@ const EditAdmin = () => {
       return "Enter a valid email address.";
     if (!gender) return "Please select a gender.";
     if (!/^\d{12}$/.test(aadharNo)) return "Aadhar Number must be 12 digits.";
-
+   
     return null;
   };
 

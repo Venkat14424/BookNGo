@@ -47,7 +47,9 @@ const UpdateUserProfile = () => {
     if (!/^[0-9]{12}$/.test(userData.aadhaar)) {
       return "Aadhaar number must be exactly 12 digits.";
     }
-
+    const today = new Date();
+    const inputDate = new Date(userData.dob);
+    if (inputDate > today) return "Date cannot be in the past.";
     return "";
   };
 
@@ -91,8 +93,8 @@ const UpdateUserProfile = () => {
   };
 
   if (loading) return <p>Loading user details...</p>;
-  if (error) return <p className="error-message">{error}</p>;
-
+  
+  // if (error) return <p className="error-message">{error}</p>;
   return (
     <div className="form-container">
       <h2 className="form-title">Edit User Details</h2>
@@ -135,6 +137,7 @@ const UpdateUserProfile = () => {
             </tr>
           </tbody>
         </table>
+        {error && <p className="error-message">{error}</p>}
         {updated && <h4 style={{ color: "green" }}>profile update successfully</h4>}
       </form>
     </div>
