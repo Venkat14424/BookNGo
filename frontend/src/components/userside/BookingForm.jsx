@@ -79,7 +79,7 @@ const BookingForm = () => {
         mode:transport.mode,
       };
 
-      const response1 = await fetch('`${backendUrl}/transport/decreaseseat', {
+      const response1 = await fetch(`${backendUrl}/transport/decreaseseat`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(seatUpdateData),
