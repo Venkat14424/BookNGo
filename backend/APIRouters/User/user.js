@@ -10,10 +10,10 @@ userRouter.use(express.json());
 const UserSchema = new mongoose.Schema(
   {
     username: { type: String, required: true },
-    gmail: { type: String, required: true, unique: true },
+    gmail: { type: String, required: true },
     gender: { type: String, required: true },
     dob: { type: Date, required: true },
-    aadhaar: { type: String, required: true, unique: true },
+    aadhaar: { type: String, required: true},
     userid: { type: String, unique: true, required: true },
     password: { type: String, required: true },
   },
